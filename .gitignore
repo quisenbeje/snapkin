@@ -2,6 +2,10 @@
 *.pyc
 __pycache__/
 
+# distribution / packaging
+build/
+dist/
+
 # setuptools files
 *.egg-info/
 

@@ -11,9 +11,14 @@ except DistributionNotFound:
 ERROR = '__error__'
 
 @click.group(invoke_without_command=True)
+@click.option('-v', '--version', is_flag=True, help='show version')
 @click.pass_context
-def cli(ctx):
-  ''' program entry point '''
+def cli(ctx,version):
+  ''' program to manipulate files/directories in btrfs snapshots '''
+  if version:
+    click.echo(__version__)
+    sys.exit()
+
   if ctx.obj is None:
     ctx.obj = {}
   ctx.obj['targets'] = []
@@ -121,7 +126,7 @@ def get_path_usage(path):
 @click.argument('path',type=click.Path())
 @click.pass_context
 def list(ctx, path, summary, flags, disk, silent):
-  ''' search snapshots for files '''
+  ''' search btrfs snapshots for a file or directory '''
 
   target        = os.path.abspath(path)
   target_subvol = get_target_subvolume(target)
@@ -186,7 +191,7 @@ def list(ctx, path, summary, flags, disk, silent):
 @click.argument('path',type=click.Path())
 @click.pass_context
 def remove(ctx, path, preview, interactive, disk, active):
-  ''' command to remove files from btrfs snapshots '''
+  ''' command to remove a file/directory from btrfs snapshots '''
 
   # run list command with silent flag to build target list
   ctx.invoke(list,path=path,silent=True)

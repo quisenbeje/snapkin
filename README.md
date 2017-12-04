@@ -1,4 +1,4 @@
-** snapkin
+# snapkin
 
 this is a script to help manage files and directories which have been backed-up
 in btrfs snapshots. given a file or path the script will search for snapshots

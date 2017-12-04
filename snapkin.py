@@ -43,13 +43,14 @@ def get_target_subvolume(target):
 
   cmd = ['btrfs', 'subvolume', 'show', target]
 
-  if not errored(shell_cmd(cmd, return_on_error=True)):
+  cmd_return = shell_cmd(cmd, return_on_error=True)
+  if not errored(cmd_return):
     # subvolume has been found return it's path
     return target
 
   elif target == '/':
     # no data was found for the base subvolume
-    click.echo('Failed to get subvolume info on path or parent\n\t{}'.format(str(err,'utf-8')))
+    click.echo('Failed to get subvolume info on path or parent\n  {}'.format(cmd_return))
     sys.exit(1)
 
   else:

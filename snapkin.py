@@ -111,7 +111,7 @@ def get_path_usage(path):
 @click.option('-s', '--summary', is_flag=True, help='show only summary info')
 @click.option('-f', '--flags',   is_flag=True, help='show snapshot flags')
 @click.option('-d', '--disk',    is_flag=True, help='show target disk usage in snapshot')
-@click.option('-s', '--silent',  is_flag=True, help='collect target snapshots with no display')
+@click.option('-S', '--silent',  is_flag=True, help='collect target snapshots with no display')
 @click.argument('path',type=click.Path())
 @click.pass_context
 def list(ctx, path, summary, flags, disk, silent):

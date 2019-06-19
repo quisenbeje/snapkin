@@ -5,7 +5,7 @@ from os.path import splitext
 
 setup(
     name='snapkin',
-    version='0.1.0',
+    version='0.1.1',
     description='btrfs snapshot clean up',
     author='JJ Quisenberry',
     author_email='johnny.e.quisenberry@gmail.com',

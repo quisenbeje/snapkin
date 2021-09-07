@@ -1,11 +1,12 @@
-import click, os, re, sys
+# baked in
+import os, re, sys
 from subprocess import Popen, PIPE
-from pkg_resources import get_distribution, DistributionNotFound
-try:
-    __version__ = get_distribution(__name__).version
-except DistributionNotFound:
-    # package is not installed
-    pass
+
+# dependancies
+import click
+
+# local
+from . import __version__
 
 # error indicator string
 ERROR = '__error__'
